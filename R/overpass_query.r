@@ -30,11 +30,11 @@
 #'
 #' pts <- overpass_query(only_nodes)
 #' }
-overpass_query <- function(query, quiet=FALSE) {
+overpass_query <- function(query, url="http://overpass-api.de/api/interpreter", quiet=FALSE) {
 
   if (!quiet) message("Issuing query to OSM Overpass...")
   # make a query, get the result, parse xml
-  res <- POST(overpass_base_url, body=query)
+  res <- POST(url, body=query)
   stop_for_status(res)
   if (!quiet) message("Query complete!")
 
