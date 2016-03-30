@@ -4,12 +4,15 @@
 \alias{overpass_query}
 \title{Issue OSM Overpass Query}
 \usage{
-overpass_query(query, quiet = FALSE)
+overpass_query(query, url="http://overpass-api.de/api/interpreter", quiet = FALSE)
 }
 \arguments{
 \item{query}{OSM Overpass query. Please note that the function is in ALPHA
 dev stage and needs YOU to specify that the output type is XML.
 However, you can use Overpass XML or Overpass QL formats.}
+
+\item{url}{OSM Overpass url. Use this parameter to change the url of the queried Overpass API.
+Default url is \code{http://overpass-api.de/api/interpreter}.}
 
 \item{quiet}{suppress status messages. OSM Overpass queries may not return quickly. The
 package will display status messages by default showing when the query started/completed.
