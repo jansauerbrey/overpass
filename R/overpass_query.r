@@ -42,7 +42,7 @@ overpass_query <- function(query, url="http://overpass-api.de/api/interpreter", 
     return(content(res, as="text"))
   }
 
-  doc <- read_xml(content(res, as="text"))
+  doc <- read_xml(content(res, as="text"), encoding="UTF-8")
 
   process_doc(doc)
 
