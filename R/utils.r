@@ -38,8 +38,9 @@ process_doc <- function(doc) {
 
   if (has_relations) {
 
-    # this inherently has to return a list structure of some kind
-
+    osm_relations <- process_osm_relations(doc)
+    # if we only have nodes return a SpatialPointsDataFrame
+    if (!has_ways) return(osm_nodes_to_sptsdf(osm_relations))
   }
 
   # if we got here something is really wrong
