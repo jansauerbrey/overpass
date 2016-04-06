@@ -1,6 +1,6 @@
 # handles making of a Lines list from the way elements
 # NOTE: ways can be polygons; need to figure that out
-process_osm_rels <- function(doc) {
+process_osm_relations <- function(doc) {
 
   # get all the centers
   tmp <- xml_attrs(xml_find_all(doc, "//center"))
