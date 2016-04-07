@@ -11,6 +11,7 @@ process_osm_relations <- function(doc) {
   centers <- as.data.frame(t(do.call(cbind, tmp)), stringsAsFactors=FALSE)
   relations <- cbind(relations, centers[, c("lon", "lat")])
   colnames(relations) = c("id", "lon", "lat")
+  relations$id = as.character(relations$id)
   
   # find all the nodes with tags
   relations_with_tags <- tryCatch(xml_find_all(doc, "//relation[child::tag]"),
