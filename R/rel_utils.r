@@ -2,10 +2,14 @@
 # NOTE: ways can be polygons; need to figure that out
 process_osm_relations <- function(doc) {
 
-  # get all the centers
-  tmp <- xml_attrs(xml_find_all(doc, "//center"))
+  # get all the relations
+  tmp <- xml_attrs(xml_find_all(doc, "//relation"))
   relations <- as.data.frame(t(do.call(cbind, tmp)), stringsAsFactors=FALSE)
-  relations <- relations[, c("lon", "lat")]
+  relations <- relations[,"id"]
+  
+  tmp <- xml_attrs(xml_find_all(doc, "//center"))
+  centers <- as.data.frame(t(do.call(cbind, tmp)), stringsAsFactors=FALSE)
+  relations <- cbind(relations, centers[, c("lon", "lat")])
   
   # need numeric lon/lat
   mutate(relations, lon=as.numeric(lon), lat=as.numeric(lat))
