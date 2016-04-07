@@ -25,9 +25,6 @@ process_osm_relations <- function(doc) {
       pts <- cbind.data.frame(id=xml_attr(x, "id"), t(v),
                               stringsAsFactors=FALSE)
     })) -> relation_attrs
-    print(relation_attrs)
-    print("relations")
-    print(relations)
     relations <- left_join(relations, relation_attrs, by="id")
   }
 
